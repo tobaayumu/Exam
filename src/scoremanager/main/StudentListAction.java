@@ -22,7 +22,7 @@ public class StudentListAction extends Action{
 
 	String entYearStr="";
 	String classNum="";
-	String isAttenStr="";
+	String isAttendStr="";
 	int entYear = 0;
 	boolean isAttend = false;
 	List<Student> students = null;
@@ -31,7 +31,24 @@ public class StudentListAction extends Action{
 	StudentDao sDao = new StudentDao();
 	ClassNumDao cNumDao = new ClassNumDao();
 	Map<String, String> errors = new HashMap<>();
+
+	entYearStr = req.getParamenter("f1");
+	classNum = req.getParameter("f2");
+	isAttendStr = req.getParameter("f3");
+
+	List<String> list = cNumDao.filter(teacher.getSchool());
+
+	if (entYear != 0 && !classNum.equals("0"));{
+		students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
+	} else if (entYear !=0 && classNum.equals("0")){
+		students = sDao.filter(teacher,getSchool(), entYear, classNum, isAttend);
 	}
+	}
+
+
+
+
+
 }
 
 
