@@ -32,6 +32,8 @@ pageEncoding="UTF-8" %>
 							<select class="form-select " id="student-f2-select" name="f2">
 								<option value="0">--------</option>
 							<c:forEach var="num" items="${class_numr_set}">
+
+
 								<%-- 現在のnumと選択されていたf1が一致していた場合selectedを追記 --%>
 								<option value="${num}" <c:if test="${num==f2}">selected</c:if>>${num}</option>
 								</c:forEach>

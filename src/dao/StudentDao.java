@@ -76,7 +76,7 @@ public class StudentDao extends Dao{
 
 				list.add(student);
 			}
-		} catch (SQLException | NullPointrException e){
+		} catch (SQLException | NullPointerException e){
 			e.printStackTrace();
 		}
 		return list;
@@ -86,7 +86,7 @@ public class StudentDao extends Dao{
 	public List<Student> filter(School school, int entYear, String classNum, boolean isAttend) throws Exception {
 		List<Student> list = new ArrayList<>();
 		Connection connection = getConnection();
-		prepareStatement statement = null;
+		PreparedStatement  statement = null;
 		ResultSet rSet = null;
 		String condition = "and ent_year=? and class_num=?";
 		String order = "order by no asc";
@@ -117,7 +117,7 @@ public class StudentDao extends Dao{
 
 	public List<Student> filter(School school, int entYear, boolean isAttend) throws Exception {
 		List<Student> list = new ArrayList<>();
-		Connecttion connection = getConnection();
+		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet rSet = null;
 		String condition = "and ent_year=?";
@@ -199,9 +199,12 @@ public class StudentDao extends Dao{
 		try {
 			Student old = get(student.getNo());
 			if (old == null){
-				statement = connection.prepareStatement("insert into student(no, name, ent_year, class_num, is_attend, school_cd) values(?, ?, ?, ?, ?, ?)");
+				statement = connection.prepareStatement(
+						"insert into student(no, name, ent_year, class_num, is_attend, school_cd) values(?, ?, ?, ?, ?, ?)");
 				statement.setString(1, student.getNo());
-				statement.setInt(3,  student.getEntYear);
+				statement.setString(2, student.getName());
+				statement.setInt(3,  student.getEntYear());
+				statement.setString(4, student.getClassNum());
 				statement.setBoolean(5, student.isAttend());
 				statement.setString(6, student.getSchool().getCd());
 			} else {
