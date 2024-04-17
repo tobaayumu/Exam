@@ -1,7 +1,7 @@
 <%-- 学生一覧JSP --%>
 <%@ page language="java" contentType="text/html; charaset=UTF-8"
 pageEncoding="UTF-8" %>
-<%@taglib prefix="c" url="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/common/base.jsp">
 	<c:param name="title">
 		得点管理システム

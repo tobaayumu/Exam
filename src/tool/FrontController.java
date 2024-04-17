@@ -15,7 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 			doGet(req,res);
 		try{
 
@@ -32,17 +35,10 @@ public class FrontController extends HttpServlet{
 	} catch (Exception e){
 		e.printStackTrace();
 		req.getRequestDispatcher("/error.jsp").forward(req, res);
+		res.getWriter().append("Served at:").append(req.getContextPath());
 	}
 }
 
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		// TODO Auto-generated method stud
-		response.getWriter().append("Served at:").append(request.getContextPath());
-	}
 	/**
 	 * @see HttpServlet#doGet1(HttpServletRequest request, HttpServletResponse response)
 	 */

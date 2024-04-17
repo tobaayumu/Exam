@@ -26,6 +26,9 @@ public class Teacher implements Serializable{
 	public void setName(String name){
 		this.name=name;
 	}
+	public School getSchool(){
+		return school;
+	}
 	public void setSchool(School school){
 		this.school = school;
 	}

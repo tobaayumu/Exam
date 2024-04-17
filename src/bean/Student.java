@@ -21,7 +21,7 @@ public class Student implements Serializable {
 	public void setName(String name){
 		this.name = name;
 	}
-	public int getName(String name){
+	public int getEntYear(){
 		return entYear;
 	}
 	public void setEntYear(int entYear){

@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.School;
 import bean.Student;
 import bean.Teacher;
+import dao.ClassNumDao;
 import dao.StudentDao;
 import tool.Action;
 
@@ -21,7 +23,18 @@ public class StudentListAction extends Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO 自動生成されたメソッド・スタブ
 		HttpSession session = request.getSession();//セッション
-		Teacher teacher = (Teacher)session.getAttribute("user");
+
+		//Teacher teacher = (Teacher)session.getAttribute("user");
+		School school = new School();
+		school.setCd("tes");
+		school.setName("テスト校");
+
+		Teacher teacher = new Teacher();
+		teacher.setId("admin1");
+		teacher.setPassword("password");
+		teacher.setName("管理者1");
+		teacher.setSchool(school);
+
 
 		String entYearStr="";//入力された入学年度
 		String classNum="";//入力されたクラス番号
