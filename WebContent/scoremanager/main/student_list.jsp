@@ -31,7 +31,7 @@ pageEncoding="UTF-8" %>
 							<label class="form-label" for="student-f2-select">クラス</label>
 							<select class="form-select " id="student-f2-select" name="f2">
 								<option value="0">--------</option>
-							<c:forEach var="num" items="${class_numr_set}">
+							<c:forEach var="num" items="${class_num_set}">
 
 
 								<%-- 現在のnumと選択されていたf1が一致していた場合selectedを追記 --%>
@@ -46,6 +46,9 @@ pageEncoding="UTF-8" %>
 								id="student-f3-check" name="f3" value="t"
 								<c:if test="${!empty f3}">checked</c:if> />
 							</label>
+						</div>
+						<div class="col-2 text-center">
+							<button class="btn btn-secondary" id="filter-button">絞込み</button>
 						</div>
 						<div class="mt-2 text-warning">${errors.get("f1")}</div>
 				</div>
@@ -80,7 +83,7 @@ pageEncoding="UTF-8" %>
 											×
 										</c:otherwise>
 									</c:choose>
-								</td>z
+								</td>
 								<td><a href="StudentUpdate.action?no=${student.no}">変更</a></td>
 								<td><a href="StudentDelete.action?no=${student.no}">削除</a></td>
 							</tr>

@@ -19,25 +19,25 @@ public class FrontController extends HttpServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-			doGet(req,res);
 		try{
 
-		String path = req.getServletPath().substring(1);
+			String path = req.getServletPath().substring(1);
 
-		String name = path.replace(".a", "A" ).replace('/', '.');
+			String name = path.replace(".a", "A" ).replace('/', '.');
 
-		System.out.println("★ servlet path ->" + req.getServletPath());
-		System.out.println("★ class name ->" + name);
+			System.out.println("★ servlet path ->" + req.getServletPath());
+			System.out.println("★ class name ->" + name);
 
-		Action action = (Action) Class.forName(name).getDeclaredConstructor().newInstance();
+			Action action = (Action) Class.forName(name).getDeclaredConstructor().newInstance();
+			action.execute(req, res);
+		} catch (Exception e){
+			e.printStackTrace();
+			req.getRequestDispatcher("/error.jsp").forward(req, res);
+		}
 
-		action.execute(req, res);
-	} catch (Exception e){
-		e.printStackTrace();
-		req.getRequestDispatcher("/error.jsp").forward(req, res);
-		res.getWriter().append("Served at:").append(req.getContextPath());
+			//res.getWriter().append("Served at:").append(req.getContextPath());
 	}
-}
+
 
 	/**
 	 * @see HttpServlet#doGet1(HttpServletRequest request, HttpServletResponse response)
